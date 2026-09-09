@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: churnpilot-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: churnpilot_ai
+    ports:
+      - "5432:5432"
+    volumes:
+      - churnpilot_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d churnpilot_ai"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  churnpilot_pgdata:

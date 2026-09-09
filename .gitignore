@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Node
+node_modules/
+dist/
+dist-ssr/
+*.local
+frontend/dist/
+
+# ML artifacts
+backend/models/*.pkl
+backend/models/*.joblib
+backend/models/*.bin
+!backend/models/.gitkeep
+
+# Local Postgres data
+backend/.pgdata/
+
+# Alembic
+*.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
