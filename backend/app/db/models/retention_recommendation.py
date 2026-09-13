@@ -1,7 +1,8 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 from uuid import UUID
 
 from sqlalchemy import CheckConstraint, ForeignKey, Index, String, Text, text
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base, TimestampMixin, UUIDPrimaryKeyMixin
@@ -58,6 +59,7 @@ class RetentionRecommendation(UUIDPrimaryKeyMixin, TimestampMixin, Base):
         server_default=text("'pending'"),
         index=True,
     )
+    payload: Mapped[dict[str, Any] | None] = mapped_column(JSONB, nullable=True)
 
     customer: Mapped["Customer"] = relationship(back_populates="retention_recommendations")
     prediction: Mapped["ChurnPrediction | None"] = relationship(back_populates="recommendations")

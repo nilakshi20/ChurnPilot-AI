@@ -1,0 +1,26 @@
+{
+  "model_name": "xgboost",
+  "model_version": "20260913T145133",
+  "trained_at": "2026-09-13T14:51:33.144327+00:00",
+  "feature_names": [
+    "tenure_months",
+    "monthly_spend",
+    "total_orders",
+    "average_order_value",
+    "days_since_last_order",
+    "purchase_frequency",
+    "support_tickets",
+    "complaint_count",
+    "discount_usage",
+    "email_engagement",
+    "login_frequency",
+    "payment_failures"
+  ],
+  "metrics": {
+    "accuracy": 0.9125,
+    "precision": 0.7777777777777778,
+    "recall": 0.875,
+    "f1": 0.8235294117647058,
+    "roc_auc": 0.9734083850931677
+  }
+}

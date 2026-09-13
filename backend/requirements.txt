@@ -13,4 +13,5 @@ shap>=0.46.0
 joblib>=1.4.0
 httpx>=0.28.0
 python-dotenv>=1.0.1
+python-multipart>=0.0.18
 pytest>=8.3.0

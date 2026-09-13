@@ -16,6 +16,10 @@ def setup_logging() -> None:
         force=True,
     )
     logging.getLogger("uvicorn.access").setLevel(logging.INFO)
+    # SQLAlchemy echoes every statement once this logger accepts INFO, so it stays off
+    # unless explicitly requested.
     logging.getLogger("sqlalchemy.engine").setLevel(
-        logging.INFO if settings.DEBUG else logging.WARNING
+        logging.INFO if settings.SQL_ECHO else logging.WARNING
     )
+    # httpx logs full request URLs at INFO; keep third-party request lines out of the log.
+    logging.getLogger("httpx").setLevel(logging.WARNING)

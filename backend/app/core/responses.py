@@ -9,6 +9,7 @@ class ApiResponse(BaseModel, Generic[T]):
     success: bool = True
     data: T | None = None
     message: str | None = None
+    error_code: str | None = None
 
 
 class ErrorDetail(BaseModel):
@@ -17,8 +18,13 @@ class ErrorDetail(BaseModel):
 
 
 def ok(data: T | None = None, message: str | None = None) -> ApiResponse[T]:
-    return ApiResponse(success=True, data=data, message=message)
+    return ApiResponse(success=True, data=data, message=message, error_code=None)
 
 
-def fail(message: str, data: T | None = None) -> ApiResponse[T]:
-    return ApiResponse(success=False, data=data, message=message)
+def fail(
+    message: str,
+    *,
+    error_code: str | None = None,
+    data: T | None = None,
+) -> ApiResponse[T]:
+    return ApiResponse(success=False, data=data, message=message, error_code=error_code)

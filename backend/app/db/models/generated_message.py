@@ -16,7 +16,7 @@ class GeneratedMessage(UUIDPrimaryKeyMixin, TimestampMixin, Base):
     __tablename__ = "generated_messages"
     __table_args__ = (
         CheckConstraint(
-            "channel IN ('email', 'sms', 'in_app')",
+            "channel IN ('email', 'sms', 'whatsapp', 'sales_call', 'in_app')",
             name="channel_valid",
         ),
         CheckConstraint(
@@ -38,6 +38,7 @@ class GeneratedMessage(UUIDPrimaryKeyMixin, TimestampMixin, Base):
         index=True,
     )
     channel: Mapped[str] = mapped_column(String(32), nullable=False, index=True)
+    tone: Mapped[str | None] = mapped_column(String(32), nullable=True)
     subject: Mapped[str | None] = mapped_column(String(255), nullable=True)
     body: Mapped[str] = mapped_column(Text, nullable=False)
     status: Mapped[str] = mapped_column(

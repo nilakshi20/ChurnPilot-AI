@@ -8,7 +8,8 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: churnpilot_ai
     ports:
-      - "5432:5432"
+      # Host port 5433 keeps this cluster clear of a system PostgreSQL on 5432.
+      - "5433:5432"
     volumes:
       - churnpilot_pgdata:/var/lib/postgresql/data
     healthcheck:
